@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title><test-overflow></title>
+            <style type="test/css">
+                div{
+                    width: 100px;
+                    border: 1px solid black;
+                    white-space: nowrap;/*줄바꿈 안 됨*/
+                    /*div를 벗어난 데이터 표시 방법 지정*/
+                    overflow: hidden;/*div를 벗어난 데이터를 숨김*/
+                    test-overflow: ellipsis;
+                }
+            </style>
+    </head>
+    <body>
+        <div>
+           엘리먼트가 잘리거나 부모 엘리먼트의 넓이와 높이가 내용을 엘리먼트가 잘리거나 부모 엘리먼트의 넓이와 높이가 내용을 
+        </div>
+    </body>
+</html>
