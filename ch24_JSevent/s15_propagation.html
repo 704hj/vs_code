@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            이벤트 전파
+            이벤트 버블링
+            이벤트 캡처링
+        */
+       window.onload=function(){
+        //이벤트 연결
+        document.getElementById('space').onclick=function(){
+            alert('space');
+            this.style.background='pink';
+        };
+        document.getElementById('paragraph').onclick=function(event){
+            alert('paragraph');
+            this.style.background='yellow';
+            // 이벤트 전파 막기
+            // 이벤트 핸들러에 매개변수로 event 객체를 전달받아서
+            // event 객체의 stopPropagation() 매서드를 호출하면 이벤트 전파를 막을 수 있음
+            event.stopPropagation();
+        };
+       }
+    </script>
+</head>
+<body>
+    <div id="space">Space
+        <p id="paragraph">Paragraph</p>
+    </div>
+</body>
+</html>
