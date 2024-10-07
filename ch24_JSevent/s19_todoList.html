@@ -88,9 +88,48 @@
                     output += '<span class="pointer check-btn" id="'+element.id+'">' +element.todo+ '(작성일 : '+element.created+')</span>';
 
                 }
+                output += '<span class="float-end badge bg-secondary pointer delete-btn" id="'+element.id+'">삭제</span>';
+                output += '</li>';
+                // 이벤트 연결작업
+
                 listGroup.innerHTML += output;
-            })
-        }//end of selectList
+            }); //end of forEach
+
+            //삭제 이벤트 연결
+            const delete_btn = document.getElementsByClassName('delete-btn');
+            for(let i=0;i<delete_btn.length;i++){
+                delete_btn[i].onclick=function(){
+                    //this : 이벤트가 발생한 태그
+                    let id = this.id;
+                    
+                    //삭제하고자 하는 아이템의 id를 todoList 배열에서 찾기
+                    //(id를 검색해서 배열에 접근 후 삭제하려고 함)
+                    //아이템의 id와 일치한 id를 갖고 있는 객체의 배열 index 반환
+                    let index = todoList.findIndex((item)=> id == item.id);
+                    
+                    //해당 객체 삭제
+                    todoList.splice(index,1);
+                    
+                    //삭제하기위해 다시 호출
+                    selectList();
+                };
+            }
+
+        //할 일 체크 이벤트 연결
+        const check_btn = document.getElementsByClassName('check-btn');
+        for(let i=0;i<check_btn.length;i++){
+            check_btn[i].onclick=function(){
+                let id = this.id;
+                let index = todoList.findIndex((item) => id == item.id);
+                //할 일 체크가 true -> false, false -> true로 변경 
+                                         //!를 앞에 붙히면 값 반대로 적용
+                todoList[index].completed = !todoList[index].completed;
+                selectList();
+            };
+        }
+
+        }
+        //end of selectList
         //초기 데이터 설정
          selectList();
 
