@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQueryUI</title>
+    <link rel="stylesheet" href="../css/jquery-ui.min.css">
+    <style type="text/css">
+        body{
+            font-family: "Trebuchet MS",Helvetica,Arial,Verdana;
+            font-size: 62.5%;
+        }
+    </style>
+    <script type="text/javascript" src="../js/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('#dialog').dialog({
+                resizable:false,
+                height:200,
+                modal:true, //modal = 이거 외에 다른거 선택 못하게 함
+                buttons:{
+                    'Delete all items':function(){
+                        $(this).dialog('close');
+                    },
+                    Cancel:function(){
+                        $(this).dialog('close');
+                    }
+
+                    //두개 먼차이지
+                }
+            });
+            });
+    </script>
+</head>
+<body>
+    <div id="dialog" title="Basic dialog">
+        <p>가을이 시작되었습니다. 날씨가 많이 쌀쌀해졌습니다.</p>
+        <!-- 새로 만든 팝업창이 아니라 div 영역 안에 띄운거라서 div 영역을 벗어날 수 없음 -->
+    </div>
+
+    <p>여기를 드래그해서 선택해보세요.</p>
+</body>
+</html>
